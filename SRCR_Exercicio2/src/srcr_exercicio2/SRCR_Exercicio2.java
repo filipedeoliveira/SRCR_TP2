@@ -16,6 +16,10 @@ public class SRCR_Exercicio2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        String termString ="x";
+        //SICStus sp;
+        
+        
     }
     
 }
