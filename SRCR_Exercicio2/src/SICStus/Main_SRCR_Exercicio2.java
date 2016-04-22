@@ -5,6 +5,7 @@
  */
 package SICStus;
 
+import static SICStus.leituraDoFicheiro.carregaScript;
 import se.sics.jasper.SICStus;
 import se.sics.jasper.SPException;
 
@@ -14,33 +15,14 @@ import se.sics.jasper.SPException;
  */
 public class Main_SRCR_Exercicio2 {
 
-    //Initalize SICStus virtual machine Não sei para que serve 
-    public static void iniciaSICStus() throws SPException {
-        SICStus sp;
-        sp = new SICStus();
-
-    }
-
-    //Load SICStus script.pl
-    public void loadScript(String argv[]) throws SPException {
-        SICStus sp = null;
-        String myFile = "exercicio2.pl";
+    public static void main(String[] argv) throws SPException {
 
         try {
-            sp = new SICStus(argv, null);
-            sp.load(myFile);
-            executaQuerie(sp);
-        } catch (SPException e) {
+            carregaScript(argv);
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Fallha ao carregar o ficheiro! ");
         }
-    }
-
-    public static void main(String[] args) throws SPException {
-        SICStus sp;
-        iniciaSICStus();
-
-        String termString = "x";
-
     }
 
 }
