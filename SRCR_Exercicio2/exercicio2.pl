@@ -21,3 +21,8 @@ utente(4,"Carlos",18,Avintes).
 
 %#####################################################################
 % Extensao do predicado Servico: Serv, Descricao, Instituicao, Cidade  -> {V,F,D}
+
+servico(1,"psiquiatria","blabla","hospitalBraga","Braga").
+servico(2,"neurologia","blabla","hospitalBraga","Braga").
+servico(1,"psiquiatria","blabla","hospitalBraga","Braga").
+servico(1,"psiquiatria","blabla","hospitalBraga","Braga").
