@@ -13,7 +13,7 @@ import se.sics.jasper.SPException;
  *
  * @author Filipe Oliveira
  */
-public class Main_SRCR_Exercicio2 {
+public class Main__Exercicio2 {
 
     public static void main(String[] argv) throws SPException {
 

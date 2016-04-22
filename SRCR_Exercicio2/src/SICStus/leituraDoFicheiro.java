@@ -14,7 +14,7 @@ import se.sics.jasper.SPException;
  */
 public class leituraDoFicheiro {
 
-    //Load SICStus script.pl
+    //Método para carregar a script
     public static void carregaScript(String argv[]) throws SPException {
         SICStus sp = null;
         String myFile = "exercicio2.pl";
@@ -28,11 +28,7 @@ public class leituraDoFicheiro {
         }
     }
 
-    //Initalize SICStus virtual machine Não sei para que serve 
-    public static void iniciaSICStus() throws SPException {
-        SICStus sp;
-        sp = new SICStus();
+    //Método para ler input do utilizador
 
-    }
-
+    
 }
