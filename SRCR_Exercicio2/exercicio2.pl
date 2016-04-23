@@ -57,6 +57,23 @@ consulta(data(14,06,2013),6,1002,30).
 consulta(data(07,09,2015),7,1003,60).
 consulta(data(5,08,2014),3,1001,40).
 
+%#####################################################################
+% Extensao do meta-predicado demo: Questao,Resposta -> {V,F}
+
+demo([],[]).
+demo([Questao|Questoes],[verdadeiro|S]):-
+	Questao,
+	demo(Questoes,S).
+
+demo([Questao|Questoes],[falso|S]):-
+	-Questao,
+	demo(Questoes,S).
+
+demo([Questao!Questoes],[desconhecido|S]):-
+	nao( Questao ),
+	nao( -Questao ),
+	demo(Questoes,S).	
+
 %####################################################################
 % Extensao do meta-predicado nao: Questao -> {V,F}
 nao( Questao ) :- Questao, !, fail.
