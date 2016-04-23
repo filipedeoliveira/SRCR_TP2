@@ -28,7 +28,7 @@ public class leituraDoFicheiro {
         }
     }
 
-    //Método para ler input do utilizador
+    private static void executaQuerie(SICStus sc) {
 
-    
+    }
 }
