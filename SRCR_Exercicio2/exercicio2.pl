@@ -28,6 +28,10 @@ utente(6,Vitor,id_desc,Porto).
 %utente(7,Sandra,30,Faro).
 utente(7,Sandra,30,mor_desc).
 
+-utente(IdUt,Nome,Idade,Morada):-
+					nao(utente(IdUt,Nome,Idade,Morada)),
+					nao(excepcao(utente(IdUt,Nome,Idade,Morada))).
+
 %#####################################################################
 % Extensao do predicado Servico: Serv, Descricao, Instituicao, Cidade  -> {V,F,D}
 
@@ -44,6 +48,10 @@ servico(1005,fisioterapia,hospitalFaro,Faro).
 servico(1003,cardiologia,hospitalFaro,cid_desc).
 servico(1001,psiquiatria,hospitalAgra,Agra).
 
+-servico(Serv,Descricao,Instituicao,Cidade):-
+						nao(servico(Serv,Descricao,Instituicao,Cidade)),
+						nao(excepcao(servico(Serv,Descricao,Instituicao,Cidade))).
+
 %#####################################################################
 %extensao do predicado consulta: Data, IdUt, Serv, Custo ->{ V, F, D }
 consulta(data(10,08,2014),1,1001,40).
@@ -56,6 +64,11 @@ consulta(data(14,06,2013),6,1002,30).
 %consulta(data(07,09,2015),7,1003,60).
 consulta(data(07,09,2015),7,1003,desc).
 consulta(data(5,08,2014),3,1001,40).
+
+
+-consulta(Data,IdUt,Serv,Custo):-
+						nao(consulta(Data,IdUt,Serv,Custo)),
+						nao(excepcao(consulta(Data,IdUt,Serv,Custo))).
 
 %####################################################################
 % Extensao do meta-predicado demo: Questao,Resposta -> {V,F}
