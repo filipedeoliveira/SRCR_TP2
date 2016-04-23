@@ -17,35 +17,44 @@
 % Extensao do predicado Utente: IdUt, Nome, Idade, Morada  -> {V,F,D}
 
 utente(1,Joao,31,Vieira).
-utente(2,Ana,22,Aveiro).
-utente(3,Sofia,25,Cabeceiras).
+%utente(2,Ana,22,Aveiro).
+utente(2,Ana,id_desc,Aveiro).
+%utente(3,Sofia,25,Cabeceiras).
+utente(3,Sofia,25,mor_desc).
 utente(4,Carlos,18,Avintes).
 utente(5,Bruno,34,Braga).
-utente(6,Vitor,27,Porto).
-utente(7,Sandra,30,Faro).
+%utente(6,Vitor,27,Porto).
+utente(6,Vitor,id_desc,Porto).
+%utente(7,Sandra,30,Faro).
+utente(7,Sandra,30,mor_desc).
 
 %#####################################################################
 % Extensao do predicado Servico: Serv, Descricao, Instituicao, Cidade  -> {V,F,D}
 
-servico(1001,psiquiatria,hospitalBraga,Braga).
+%servico(1001,psiquiatria,hospitalBraga,Braga).
+servico(1001,psiquiatria,hospitalBraga,cid_desc).
 servico(1002,neurologia,hospitalPorto,Porto).
 servico(1003,cardiologia,hospitalAgra,Braga).
 servico(1001,psiquiatria,hospitalPorto,Porto).
 servico(1004,oncologia,hospitalBraga,Braga).
-servico(1003,cardiologia,hospitalPorto,Porto).
+%servico(1003,cardiologia,hospitalPorto,Porto).
+servico(1003,cardiologia,hospitalPorto,cid_desc).
 servico(1005,fisioterapia,hospitalFaro,Faro).
-servico(1003,cardiologia,hospitalFaro,Faro).
+%servico(1003,cardiologia,hospitalFaro,Faro).
+servico(1003,cardiologia,hospitalFaro,cid_desc).
 servico(1001,psiquiatria,hospitalAgra,Agra).
 
 %#####################################################################
 %extensao do predicado consulta: Data, IdUt, Serv, Custo ->{ V, F, D }
 consulta(data(10,08,2014),1,1001,40).
-consulta(data(08,03,2013),2,1002,30).
+%consulta(data(08,03,2013),2,1002,30).
+consulta(data(08,03,2013),2,1002,desc).
 consulta(data(27,02,2016),3,1005,35).
 consulta(data(17,11,2013),4,1004,50).
 consulta(data(30,12,2015),5,1005,35).
 consulta(data(14,06,2013),6,1002,30).
-consulta(data(07,09,2015),7,1003,60).
+%consulta(data(07,09,2015),7,1003,60).
+consulta(data(07,09,2015),7,1003,desc).
 consulta(data(5,08,2014),3,1001,40).
 
 %####################################################################
