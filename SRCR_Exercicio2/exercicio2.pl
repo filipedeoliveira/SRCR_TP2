@@ -4,15 +4,6 @@
 :- set_prolog_flag( single_var_warnings,off ).
 :- set_prolog_flag( unknown,fail ).
 
-% Extensao do meta-predicado demo: Questao,Resposta -> {V,F}
-
-demo( Questao,verdadeiro ) :-
-    Questao.
-demo( Questao, falso ) :-
-    -Questao.
-demo( Questao,desconhecido ) :-
-    nao( Questao ),
-    nao( -Questao ).
 
 %####################################################################
 % SICStus PROLOG: definicoes iniciais
@@ -57,22 +48,17 @@ consulta(data(14,06,2013),6,1002,30).
 consulta(data(07,09,2015),7,1003,60).
 consulta(data(5,08,2014),3,1001,40).
 
-%#####################################################################
+%####################################################################
 % Extensao do meta-predicado demo: Questao,Resposta -> {V,F}
 
-demo([],[]).
-demo([Questao|Questoes],[verdadeiro|S]):-
-	Questao,
-	demo(Questoes,S).
+demo( Questao,verdadeiro ) :-
+    Questao.
+demo( Questao, falso ) :-
+    -Questao.
+demo( Questao,desconhecido ) :-
+    nao( Questao ),
+    nao( -Questao ).
 
-demo([Questao|Questoes],[falso|S]):-
-	-Questao,
-	demo(Questoes,S).
-
-demo([Questao!Questoes],[desconhecido|S]):-
-	nao( Questao ),
-	nao( -Questao ),
-	demo(Questoes,S).	
 
 %####################################################################
 % Extensao do meta-predicado nao: Questao -> {V,F}
