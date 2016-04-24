@@ -33,16 +33,37 @@ public class leituraDoFicheiro {
 
     }
 
-    /*Tratamento do input do utilizador, tokens*/
-    private ArrayList<String> myTokenizer(String inPut, String predicado) {
-        StringBuilder str = new StringBuilder();
-        ArrayList<String> resArgumentos = new ArrayList();
+    /*Tratamento do input do utilizador, separa os campos do inPut*/
+    private static ArrayList<String> myTokenizer(String inPut, String predicado) {
 
-        for (int i = predicado.length() + 1; i < inPut.length(); i++) {
-            
+        StringBuilder str = new StringBuilder();
+        ArrayList<String> res = new ArrayList<>();
+        int i = predicado.length() + 1;
+        
+        while (i < inPut.length()) {
+            if (inPut.charAt(i) == ',') {
+                res.add(str.toString());
+                str = new StringBuilder();
+
+            } else if (inPut.charAt(i) == '(' || inPut.charAt(i) == '[') {
+                str.append(inPut.charAt(i));
+                i++;
+                while (i < inPut.length() && inPut.charAt(i) != ')' && inPut.charAt(i) != ']') {
+                    str.append(inPut.charAt(i));
+                    i++;
+                }
+                if (i < inPut.length()) {
+                    str.append(inPut.charAt(i));
+                }
+            } else if (inPut.charAt(i) == ')') {
+                res.add(str.toString());
+            } else {
+                str.append(inPut.charAt(i));
+            }
+            i++;
         }
 
-        return resArgumentos;
+        return res;
     }
 
 
@@ -74,10 +95,13 @@ public class leituraDoFicheiro {
 
 ////////////////Só para testar algumas funções
     public static void main(String[] argv) {
-        String str = "ola joao.";
-        String res;
-        res = limpaString(str);
-        System.out.println(res);
+
+        ArrayList<String> res = new ArrayList<>();
+        //res = sicstusTokenizer("carro(R,'ola','la')", "carro");
+        res = myTokenizer("carro(R,'ola','la')", "carro");
+        for (String s : res) {
+            System.out.println(s);
+        }
 
     }
 
