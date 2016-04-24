@@ -5,6 +5,7 @@
  */
 package SICStus;
 
+import java.util.ArrayList;
 import se.sics.jasper.SICStus;
 import se.sics.jasper.SPException;
 
@@ -31,6 +32,19 @@ public class leituraDoFicheiro {
     private static void executaQuerie(SICStus sc) {
 
     }
+
+    /*Tratamento do input do utilizador, tokens*/
+    private ArrayList<String> myTokenizer(String inPut, String predicado) {
+        StringBuilder str = new StringBuilder();
+        ArrayList<String> resArgumentos = new ArrayList();
+
+        for (int i = predicado.length() + 1; i < inPut.length(); i++) {
+            
+        }
+
+        return resArgumentos;
+    }
+
 
     /*Limpa os espaços iniciais e finais de uma srtring*/
     private static String limpaString(String str) {
@@ -64,7 +78,7 @@ public class leituraDoFicheiro {
         String res;
         res = limpaString(str);
         System.out.println(res);
-        
+
     }
 
 }
