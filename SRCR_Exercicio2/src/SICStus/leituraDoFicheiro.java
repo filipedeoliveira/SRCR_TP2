@@ -33,7 +33,7 @@ public class leituraDoFicheiro {
     }
 
     /*Limpa os espaços iniciais e finais de uma srtring*/
-    private String limpaString(String str) {
+    private static String limpaString(String str) {
         StringBuilder strAux = new StringBuilder(str);
         String res;
 
@@ -56,6 +56,15 @@ public class leituraDoFicheiro {
         res = strAux.toString();
         return res;
 
+    }
+
+////////////////Só para testar algumas funções
+    public static void main(String[] argv) {
+        String str = "ola joao.";
+        String res;
+        res = limpaString(str);
+        System.out.println(res);
+        
     }
 
 }
