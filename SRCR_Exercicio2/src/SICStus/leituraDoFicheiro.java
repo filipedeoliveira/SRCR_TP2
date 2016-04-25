@@ -6,6 +6,8 @@
 package SICStus;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 import se.sics.jasper.SICStus;
 import se.sics.jasper.SPException;
 
@@ -18,18 +20,55 @@ public class leituraDoFicheiro {
     //Método para carregar a script
     public static void carregaScript(String argv[]) throws SPException {
         SICStus sp = null;
+        String palha = null;
         String myFile = "exercicio2.pl";
 
         try {
             sp = new SICStus(argv, null);
             sp.load(myFile);
-            executaQuerie(sp);
+            leQuerie(sp, palha, palha);
         } catch (SPException e) {
             e.printStackTrace();
         }
     }
 
-    private static void executaQuerie(SICStus sc) {
+    public static void leQuerie(SICStus sc, String resposta, String linha) {
+
+        String predicado;
+
+        while (resposta.equals("Sim")) {
+            StringTokenizer myToken = new StringTokenizer(resposta, "(");
+            try {
+                if (myToken.hasMoreTokens() && resposta.equals("Sim")) {
+                    predicado = myToken.nextToken();
+                    trataTokens(linha, predicado, sc, resposta);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private static void trataTokens(String linha, String predicado, SICStus sp, String resposta) {
+        ArrayList<String> perguntas = new ArrayList<>();
+        ArrayList<String> argumentos = new ArrayList<>();
+        ArrayList<String> aux;
+
+        aux = myTokenizer(linha, predicado);
+        for (String token : aux) {
+            String tokenAtual = limpaString(token);
+            if (Character.isUpperCase(tokenAtual.charAt(0))) {
+                perguntas.add(tokenAtual);
+            } else {
+                argumentos.add(tokenAtual);
+            }
+        }
+        executaQuery(sp, linha, resposta, argumentos, perguntas);
+    }
+
+    public static void executaQuery(SICStus sp, String linha, String resposta,
+            ArrayList<String> argumentos, ArrayList<String> perguntas) {
 
     }
 
@@ -39,7 +78,7 @@ public class leituraDoFicheiro {
         StringBuilder str = new StringBuilder();
         ArrayList<String> res = new ArrayList<>();
         int i = predicado.length() + 1;
-        
+
         while (i < inPut.length()) {
             if (inPut.charAt(i) == ',') {
                 res.add(str.toString());
