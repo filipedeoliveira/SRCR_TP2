@@ -113,20 +113,20 @@ excepcao(consulta(data(07,09,2015),7,1003,55)).
 %#######################Mecanismos de raciocinio#####################
 
 %"Getters"
-IdUt(utente(IdUt, Nome, Idade, Morada),IdUt).
-Nome(utente(IdUt, Nome, Idade, Morada),Nome).
-Idade(utente(IdUt, Nome, Idade, Morada),Idade).
-Morada(utente(IdUt, Nome, Idade, Morada),Morada).
+idUt(utente(IdUt, Nome, Idade, Morada),IdUt).
+nome(utente(IdUt, Nome, Idade, Morada),Nome).
+idade(utente(IdUt, Nome, Idade, Morada),Idade).
+morada(utente(IdUt, Nome, Idade, Morada),Morada).
 
-Servico((Servico, Descricao, Instituicao, Cidade),Servico).
-Descricao((Servico, Descricao, Instituicao, Cidade),Descricao).
-Instituicao((Servico, Descricao, Instituicao, Cidade),Instituicao).
-Cidade((Servico, Descricao, Instituicao, Cidade),Cidade).
+servico(servico(Servico, Descricao, Instituicao, Cidade),Servico).
+descricao(servico(Servico, Descricao, Instituicao, Cidade),Descricao).
+instituicao(servico(Servico, Descricao, Instituicao, Cidade),Instituicao).
+cidade(servico(Servico, Descricao, Instituicao, Cidade),Cidade).
 
-Data((Data, Id, Serv, Custo),Data).
-Id((Data, Id, Serv, Custo),Id).
-Serc((Data, Id, Serv, Custo),Serv).
-Custo((Data, Id, Serv, Custo),Custo).
+data(consulta(Data, Id, Serv, Custo),Data).
+id(consulta(Data, Id, Serv, Custo),Id).
+serc(consulta(Data, Id, Serv, Custo),Serv).
+custo(consulta(Data, Id, Serv, Custo),Custo).
 
 %Outros Mecanismos
 
@@ -135,9 +135,9 @@ listaServicos(Instituicao, Lista):- findall(Descricao,servico(_,Descricao,Instit
 %(..se for preciso faz-se mais alguns q sejam interessantes...)
 
 
-############################################################################################
-########################### VER BEM ########################################################
-############################################################################################
+%############################################################################################
+%########################### VER BEM ########################################################
+%############################################################################################
 % Extensao do meta-predicado demo: Questao,Resposta -> {V,F}
 
 demo([],[]).
@@ -165,8 +165,8 @@ demonstr(Questao,desconhecido):-
 nao(Questao),
 nao(-Questao).
 
-############################################################################################
-############################################################################################
+%############################################################################################
+%############################################################################################
 
 
 
