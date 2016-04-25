@@ -6,10 +6,13 @@
 package SICStus;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import se.sics.jasper.SICStus;
 import se.sics.jasper.SPException;
+import se.sics.jasper.SPQuery;
+import se.sics.jasper.Term;
 
 /**
  *
@@ -68,7 +71,47 @@ public class leituraDoFicheiro {
     }
 
     public static void executaQuery(SICStus sp, String linha, String resposta,
-            ArrayList<String> argumentos, ArrayList<String> perguntas) {
+            ArrayList<String> arg, ArrayList<String> perg) {
+        SPQuery qry;
+
+        HashMap<String, Term> res = new HashMap<String, Term>();
+        try {
+            for (String str : arg) {
+                res.put(str, sp.newTerm(str));
+            }
+
+            if (perg.size() > 0) {
+                int i = 0;
+                boolean readNext = true;
+                String cont = null;
+
+                qry = sp.openQuery(linha, res);
+
+                while (readNext && qry.nextSolution()) {
+                    for (String ax : perg) {
+                        System.out.println(ax + " = " + res.get(ax) + "?");
+                    }
+                    System.out.println("Pretende a próxima solução? Seim -> \";\"" + "para mais resultados: ");
+                    try{cont = resposta;}
+                    catch(Exception e){
+                        e.printStackTrace();
+                        cont = "Não";
+                    }
+                    i=1;
+                    if(!cont.equals(";")) readNext = false;
+                    else i= 0;
+                }
+                if(i==0) System.out.println("Não");
+                qry.close();  
+            }
+            else{
+                boolean myRes = sp.query(linha, res);
+                System.out.println(myRes + ""); 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erro a chamar o Sicstus ou localização da script.pl ");
+        }
 
     }
 
@@ -133,7 +176,7 @@ public class leituraDoFicheiro {
     }
 
 ////////////////Só para testar algumas funções
-    public static void main(String[] argv) {
+   /* public static void main(String[] argv) {
 
         ArrayList<String> res = new ArrayList<>();
         //res = sicstusTokenizer("carro(R,'ola','la')", "carro");
@@ -142,6 +185,6 @@ public class leituraDoFicheiro {
             System.out.println(s);
         }
 
-    }
+    }*/
 
 }
